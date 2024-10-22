@@ -20752,6 +20752,7 @@ function getResult(location) {
 
   else if(!(location == "") && location == villageName) 
     {
+      let getCityName="";
         for(let i =0;i<villageData.length;i++){
           if (villageData[i].name == location) {
               locationId = villageData[i].ilce_id
@@ -20763,7 +20764,20 @@ function getResult(location) {
             getName = districtData[i].name
           }
         }
-        return "Girilen Köyün İlçesi : "+getName;
+
+        for(let i = 0;i<districtData.length;i++){
+          if(districtData[i].name == getName){
+             locationId =districtData[i].il_id
+          }
+        }
+  
+        for(let i =0;i<cityData.length;i++){
+          if (cityData[i].id == locationId) {
+            getCityName = cityData[i].name
+          }
+        }
+
+        return "İl " + getCityName +" İlçe "+ getName;
       
     }
   return "Herhangi Bir Değer Gİrilmedi"
